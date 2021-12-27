@@ -1,8 +1,10 @@
 <p align="center">
-    <a href="https://github.com/yiisoft" target="_blank">
-        <img src="https://avatars0.githubusercontent.com/u/993323" height="100px">
-    </a>
-    <h1 align="center">Yii 2 Advanced Project Template</h1>
+    <img src="https://avatars0.githubusercontent.com/u/993323" height="100px">
+    <img src="./console/creators/Olimjon.jpg" height="100px">
+    [alt text](./console/creators/Olimjon.jpg)
+    <h1 align="center">
+        Evr-Taxi Backend
+    </h1>
     <br>
 </p>
 
