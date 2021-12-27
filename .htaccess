@@ -1,0 +1,18 @@
+Options -Indexes
+IndexIgnore */*
+
+Options FollowSymLinks
+
+# If a directory or a file exists, use the request directly
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+RewriteEngine On
+
+RewriteRule ^api(/.+)?$ api/web/$1 [L,PT]
+RewriteRule ^api/(.+)?$ api/web/$1 [L,PT]
+
+RewriteRule ^admin(/.+)?$ backend/web/$1 [L,PT]
+RewriteRule ^admin/(.+)?$ backend/web/$1 [L,PT]
+
+RewriteRule ^(.+)?$ frontend/web/$1

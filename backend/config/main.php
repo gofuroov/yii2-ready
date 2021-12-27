@@ -14,6 +14,7 @@ return [
     'modules' => [],
     'components' => [
         'request' => [
+            'baseUrl' => '/admin',
             'csrfParam' => '_csrf-backend',
         ],
         'user' => [
@@ -37,14 +38,12 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-        /*
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
             ],
         ],
-        */
     ],
     'params' => $params,
 ];
