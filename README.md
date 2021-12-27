@@ -1,18 +1,9 @@
-<p align="center">
-    
 <div style="display: flex; justify-content: space-around">
     <img src="https://avatars0.githubusercontent.com/u/993323" height="400px">
     <div style="border-radius: 50%">
         <img src="./console/creators/Olimjon.jpg" height="400px">
     </div>
 </div>
-    
-    <h1 align="center">
-        Evr-Taxi Backend
-    </h1>
-    <br>
-</p>
-
 Yii 2 Advanced Project Template is a skeleton [Yii 2](http://www.yiiframework.com/) application best for
 developing complex Web applications with multiple tiers.
 
