@@ -1,6 +1,6 @@
 <p align="center">
-    <img src="https://avatars0.githubusercontent.com/u/993323" height="100px">
-    <img src="./console/creators/Olimjon.jpg" height="100px" style="border-radius: 50%">
+    <img src="https://avatars0.githubusercontent.com/u/993323" height="400px">
+    <img src="./console/creators/Olimjon.jpg" height="400px" style="border-radius: 50%">
     <h1 align="center">
         Evr-Taxi Backend
     </h1>
