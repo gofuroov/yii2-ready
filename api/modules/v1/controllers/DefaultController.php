@@ -1,23 +1,22 @@
 <?php
 
-namespace api\controllers;
+namespace api\modules\v1\controllers;
 
-use app\config\Cors;
+use api\controllers\BaseController;
 use Yii;
-use yii\rest\Controller;
+use yii\base\InvalidConfigException;
 
 /**
- * Site controller
+ * Default controller for the `v1` module
  */
-class SiteController extends BaseController
+class DefaultController extends BaseController
 {
     /**
-     * Displays homepage.
-     *
+     * Renders the index view for the module
      * @return array
-     * @throws \yii\base\InvalidConfigException
+     * @throws InvalidConfigException
      */
-    public function actionIndex()
+    public function actionIndex(): array
     {
         return [
             'app' => 'Evr taxi',

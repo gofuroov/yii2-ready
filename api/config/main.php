@@ -1,7 +1,9 @@
 <?php
 
-use yii\log\FileTarget;
+use yii\web\JsonResponseFormatter;
+use api\modules\v1\Module;
 use common\models\User;
+use yii\log\FileTarget;
 use yii\web\JsonParser;
 use yii\web\MultipartFormDataParser;
 
@@ -17,7 +19,11 @@ return [
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'api\controllers',
     'bootstrap' => ['log'],
-    'modules' => [],
+    'modules' => [
+        'v1' => [
+            'class' => Module::class,
+        ],
+    ],
     'components' => [
         'request' => [
             'baseUrl' => '/api',
@@ -26,6 +32,17 @@ return [
                 'application/json' => JsonParser::class,
                 'multipart/form-data' => MultipartFormDataParser::class
             ],
+        ],
+        'response' => [
+            'formatters' => [
+                \yii\web\Response::FORMAT_JSON => [
+                    'class' => JsonResponseFormatter::class,
+                    'prettyPrint' => YII_DEBUG, // use "pretty" output in debug mode
+                    'encodeOptions' => JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE,
+                ],
+            ],
+            'format' => yii\web\Response::FORMAT_JSON,
+            'charset' => 'UTF-8',
         ],
         'user' => [
             'identityClass' => User::class,
