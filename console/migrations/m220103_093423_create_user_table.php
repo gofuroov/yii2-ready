@@ -2,7 +2,10 @@
 
 use yii\db\Migration;
 
-class m130524_201442_init extends Migration
+/**
+ * Handles the creation of table `{{%user}}`.
+ */
+class m220103_093423_create_user_table extends Migration
 {
     public function up()
     {
@@ -14,11 +17,18 @@ class m130524_201442_init extends Migration
 
         $this->createTable('{{%user}}', [
             'id' => $this->primaryKey(),
-            'username' => $this->string()->notNull()->unique(),
+            'name' => $this->string(),
+            'surname' => $this->string(),
+            'username' => $this->string()->unique(),
+            'phone' => $this->string(),
+            'sex' => $this->tinyInteger(),
             'auth_key' => $this->string(32)->notNull(),
             'password_hash' => $this->string()->notNull(),
             'password_reset_token' => $this->string()->unique(),
-            'email' => $this->string()->notNull()->unique(),
+            'temp' => $this->integer(),
+            'photo' => $this->string(),
+            'type' => $this->tinyInteger()->notNull(),
+            'driver_licence' => $this->string(),
 
             'status' => $this->smallInteger()->notNull()->defaultValue(10),
             'created_at' => $this->integer()->notNull(),
