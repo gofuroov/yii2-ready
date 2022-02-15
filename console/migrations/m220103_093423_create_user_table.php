@@ -17,9 +17,9 @@ class m220103_093423_create_user_table extends Migration
 
         $this->createTable('{{%user}}', [
             'id' => $this->primaryKey(),
-            'name' => $this->string(),
-            'surname' => $this->string(),
             'username' => $this->string()->unique(),
+            'first_name' => $this->string(),
+            'last_name' => $this->string(),
             'phone' => $this->string(),
             'sex' => $this->tinyInteger(),
             'auth_key' => $this->string(32)->notNull(),
@@ -28,9 +28,7 @@ class m220103_093423_create_user_table extends Migration
             'temp' => $this->integer(),
             'photo' => $this->string(),
             'type' => $this->tinyInteger()->notNull(),
-            'driver_licence' => $this->string(),
-
-            'status' => $this->smallInteger()->notNull()->defaultValue(10),
+            'status' => $this->smallInteger()->notNull()->defaultValue(9),
             'created_at' => $this->integer()->notNull(),
             'updated_at' => $this->integer()->notNull(),
         ], $tableOptions);

@@ -14,7 +14,7 @@ $this->title = 'Admin';
         <div class="card-header">
             <h3 class="card-title">
                 <i class="fas fa-fan fa-spin mr-2"></i>
-                EVR TAXI powered by iTeach LLC
+                EVR TAXI
             </h3>
         </div>
         <div class="card-body login-card-body">
