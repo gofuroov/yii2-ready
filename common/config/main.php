@@ -3,7 +3,7 @@
 use yii\caching\FileCache;
 
 return [
-    'name' => 'EVR Taxi',
+    'name' => 'My Application',
     'timeZone' => 'Asia/Tashkent',
     'language' => 'uz',
     'aliases' => [

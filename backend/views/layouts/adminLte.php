@@ -22,7 +22,7 @@ $class = Yii::$app->request->cookies->getValue('sidebar', 'sidebar-collapse');
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <?php $this->registerCsrfMetaTags() ?>
         <title><?= Html::encode($this->title) ?></title>
-
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg">
         <!-- Google Font: Source Sans Pro -->
         <link rel="stylesheet"
               href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
