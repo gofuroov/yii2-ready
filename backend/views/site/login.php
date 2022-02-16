@@ -14,7 +14,6 @@ $this->title = 'Admin';
         <div class="card-header">
             <h3 class="card-title">
                 <i class="fas fa-fan fa-spin mr-2"></i>
-                EVR TAXI
             </h3>
         </div>
         <div class="card-body login-card-body">
@@ -58,13 +57,3 @@ $this->title = 'Admin';
         </div>
         <!-- /.login-card-body -->
     </div>
-
-<?php
-/**
- * <p class="mb-1">
- * <?= Html::a("Ro'yxatdan o'tish", ['site/register'], ['class' => 'text-center']) ?>
- * </p>
- * <p class="mb-0">
- * <?= Html::a("Parolni unutdingizmi?", ['site/restore'], ['class' => 'text-center']) ?>
- * </p>
- */
