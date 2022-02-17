@@ -1,8 +1,6 @@
 <?php
 
-use backend\assets\AdminLteAssets;
 use yii\helpers\Html;
-use yii\helpers\Url;
 
 ?>
 <nav class="main-header navbar navbar-expand navbar-dark">
@@ -79,14 +77,13 @@ use yii\helpers\Url;
         <!--    User    -->
         <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-                <i class="fas fa-user mr-2"></i>
+                <i class="fa-solid fa-user mr-2"></i>
                 <span class="hidden-xs "> <?= Yii::$app->user->identity->username ?? '' ?></span>
-                <i class="fas fa-caret-down"></i>
+                <i class="fa fa-caret-down ml-1"></i>
             </a>
             <ul class="dropdown-menu">
                 <li class="user-header bg-gray-light">
-                    <img src="<?= Yii::$app->user->identity->photoUrl ?>"
-                         class="img-circle" alt="User Image"/>
+                    <img src="<?= Yii::$app->user->identity->photoUrl ?>" class="img-circle" alt="User Image"/>
                     <p>
                         <?= Yii::$app->user->identity->fullname ?? '' ?>
                     </p>
@@ -94,7 +91,7 @@ use yii\helpers\Url;
                 <!-- Menu Footer-->
                 <li class="user-footer">
                     <div class="d-flex justify-content-between">
-                        <?= Html::a("<span class='fas fa-user-cog'></span> Profil", ['/admin/settings'], [
+                        <?= Html::a("<span class='fas fa-user-cog'></span> Profil", ['/user/index'], [
                                 'class' => 'btn btn-default btn-flat'
                             ]
                         ) ?>

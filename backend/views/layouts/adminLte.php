@@ -32,7 +32,7 @@ AdminLteAsset::register($this);
     <div class="wrapper">
 
         <!-- Preloader -->
-        <?= YII_DEBUG ? '' : $this->render("adminlte/_preloader") ?>
+        <?= $this->render("adminlte/_preloader") ?>
 
         <!-- Navbar -->
         <?= $this->render("adminlte/_navbar") ?>

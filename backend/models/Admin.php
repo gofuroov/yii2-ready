@@ -3,7 +3,7 @@
 namespace backend\models;
 
 use common\models\User;
-use Yii;
+use yii\helpers\Url;
 
 /**
  *
@@ -16,6 +16,6 @@ class Admin extends User
         if (!$this->photo) {
             return "/admin/images/defaultAvatar.png";
         }
-        return 'url'.$this->photo;
+        return Url::base() . '/uploads/' . $this->photo;
     }
 }

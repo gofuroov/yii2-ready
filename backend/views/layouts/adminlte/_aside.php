@@ -4,7 +4,6 @@
  * @var $this \yii\web\View
  */
 
-use backend\assets\AdminLteAssets;
 use backend\models\Menu;
 use yii\helpers\Url;
 
@@ -12,7 +11,7 @@ use yii\helpers\Url;
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="<?= Url::home() ?>" class="brand-link">
-        <img src="<?= Url::base().'/adminlte/img/AdminLTELogo.png' ?>"
+        <img src="<?= Url::base() . '/adminlte/img/AdminLTELogo.png' ?>"
              alt="AdminLTE Logo"
              class="brand-image img-circle elevation-3"
              style="opacity: .8">
@@ -29,7 +28,7 @@ use yii\helpers\Url;
                      alt="User Image">
             </div>
             <div class="info">
-                <a href="<?= Url::to(['admin/settings']) ?>" class="d-block"
+                <a href="<?= Url::to(['user/index']) ?>" class="d-block"
                    style="text-transform: capitalize"><?= Yii::$app->user->identity->username ?? '' ?></a>
             </div>
         </div>

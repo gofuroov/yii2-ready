@@ -6,6 +6,12 @@ $(document).ready(function () {
     $("body").tooltip({selector: '[data-toggle=tooltip]'});
 
     /**
+     * Active link menu item
+     */
+    $(".nav-item.active a").addClass("active")
+    $(".nav-item.active").removeClass("active")
+
+    /**
      * Sidebar menu
      * @type {*|jQuery|HTMLElement}
      */

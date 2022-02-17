@@ -11,7 +11,7 @@ use yii\helpers\Html;
 $this->title = $name;
 ?>
 <div class="card shadow card-danger card-outline">
-    <div class="card-body">
+    <div class="card-body m-1">
         <h1 class="text-center"><?= Html::encode($this->title) ?></h1>
 
         <div class="alert alert-danger text-center">
