@@ -19,12 +19,11 @@ class DefaultController extends BaseController
     public function actionIndex(): array
     {
         return [
-            'app' => 'Evr taxi',
+            'app' => 'My application',
             'author' => [
                 'name' => "Olimjon G'ofurov",
                 'telegram' => 'https://telegram.org/gofuroov',
                 'github' => 'https://github.com/gofuroov',
-                'phone' => '+998 99 999 59 98',
             ],
             'time' => Yii::$app->formatter->asDatetime(time())
         ];
