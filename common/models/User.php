@@ -16,7 +16,6 @@ use yii\web\IdentityInterface;
  * @property string $first_name
  * @property string $last_name
  * @property string $phone
- * @property int $sex
  * @property string $auth_key
  * @property string $password_hash
  * @property string $password_reset_token
@@ -34,13 +33,9 @@ class User extends ActiveRecord implements IdentityInterface
     public const STATUS_ACTIVE = 10;
 
     public const TYPE_ADMIN = 10;
-    public const TYPE_DRIVER = 5;
-    public const TYPE_PASSENGER = 1;
+    public const TYPE_USER = 1;
 
-    public const SEX_MAN = 1;
-    public const SEX_WOMAN = 0;
-
-
+    //<editor-fold desc="Main">
     /**
      * {@inheritdoc}
      */
@@ -67,19 +62,19 @@ class User extends ActiveRecord implements IdentityInterface
         return [
             [['username', 'first_name', 'last_name', 'phone', 'auth_key', 'password_hash', 'type'], 'required'],
             [['username', 'first_name', 'last_name', 'phone', 'auth_key', 'password_hash'], 'string'],
-            [['sex', 'type', 'status', 'temp'], 'integer'],
-            ['sex', 'in', 'range' => [self::SEX_MAN, self::SEX_WOMAN]],
-            ['type', 'in', 'range' => [self::TYPE_ADMIN, self::TYPE_PASSENGER, self::TYPE_DRIVER]],
+            [['type', 'status', 'temp'], 'integer'],
+            ['type', 'in', 'range' => [self::TYPE_ADMIN, self::TYPE_USER]],
             ['status', 'default', 'value' => self::STATUS_INACTIVE],
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_INACTIVE, self::STATUS_DELETED]],
         ];
     }
+    //</editor-fold>
 
+    //<editor-fold desc="My getters">
     public static function getTypes(): array
     {
         return [
-            self::TYPE_PASSENGER => 'Yo\'lovchi',
-            self::TYPE_DRIVER => 'Haydovchi',
+            self::TYPE_USER => 'Foydalanuvchi',
             self::TYPE_ADMIN => 'Admin',
         ];
     }
@@ -93,6 +88,14 @@ class User extends ActiveRecord implements IdentityInterface
     {
         return $this->first_name . ' ' . $this->last_name;
     }
+
+    public function getPhotoUrl(): string
+    {
+        return '';
+    }
+    //</editor-fold>
+
+    //<editor-fold desc="Auth">
     /**
      * {@inheritdoc}
      */
@@ -183,4 +186,5 @@ class User extends ActiveRecord implements IdentityInterface
     {
         $this->username = Yii::$app->security->generateRandomString();
     }
+    //</editor-fold>
 }

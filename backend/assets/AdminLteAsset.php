@@ -7,7 +7,7 @@
 
 namespace backend\assets;
 
-use yii\bootstrap4\BootstrapAsset;
+use yii\bootstrap4\BootstrapPluginAsset;
 use yii\web\YiiAsset;
 
 class AdminLteAsset extends \yii\web\AssetBundle
@@ -25,7 +25,7 @@ class AdminLteAsset extends \yii\web\AssetBundle
     ];
     public $js = [
         'adminlte/plugins/jquery-ui/jquery-ui.min.js',
-        'adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js',
+//        'adminlte/plugins/bootstrap/js/bootstrap.js',
         'adminlte/plugins/jquery-knob/jquery.knob.min.js',
         'adminlte/plugins/moment/moment.min.js',
         'adminlte/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js',
@@ -34,6 +34,6 @@ class AdminLteAsset extends \yii\web\AssetBundle
     ];
     public $depends = [
         YiiAsset::class,
-        BootstrapAsset::class,
+        BootstrapPluginAsset::class,
     ];
 }

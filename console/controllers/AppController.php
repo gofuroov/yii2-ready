@@ -8,14 +8,14 @@
 namespace console\controllers;
 
 use common\models\User;
-use console\models\SignupForm;
+use console\models\AdminSignupForm;
 use yii\helpers\Console;
 
 class AppController extends \yii\console\Controller
 {
-    public function actionAdminCreate(): void
+    public function actionAdminCreateInteractive(): void
     {
-        $form = new SignupForm();
+        $form = new AdminSignupForm();
 
         Console::output("******************************");
         Console::output("* Created by Olimjon Gofurov *");
@@ -56,18 +56,20 @@ class AppController extends \yii\console\Controller
         }
     }
 
-    public function actionAddAdmin(string $username, string $first_name, string $last_name, string $phone, string $password): void
+    /**
+     * @throws \yii\base\Exception
+     */
+    public function actionAdminCreate(string $username, string $first_name, string $last_name, string $phone, string $password): void
     {
-        $form = new SignupForm();
-        $form->username = $username;
-        $form->first_name = $first_name;
-        $form->last_name = $last_name;
-        $form->phone = $phone;
-        $form->type = User::TYPE_ADMIN;
-        $form->password = $password;
-        $form->repeat_password = $password;
+        $form = new AdminSignupForm([
+            'username' => $username,
+            'first_name' => $first_name,
+            'last_name' => $last_name,
+            'phone' => $phone,
+            'password' => $password,
+        ]);
 
-        if ($form->validate() && $form->save()) {
+        if ($form->save()) {
             Console::output("* Saqlandi: $form->username");
             exit();
         }

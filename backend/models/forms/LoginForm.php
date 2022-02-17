@@ -21,7 +21,7 @@ class LoginForm extends Model
     public string $password = '';
     public bool $rememberMe = true;
 
-    private ?User $_user;
+    private $_user;
 
 
     /**
@@ -55,7 +55,7 @@ class LoginForm extends Model
      * @param string $attribute the attribute currently being validated
      * @param array $params the additional name-value pairs given in the rule
      */
-    public function validatePassword(string $attribute, array $params): void
+    public function validatePassword(string $attribute, $params = null): void
     {
         if (!$this->hasErrors()) {
             $user = $this->getUser();

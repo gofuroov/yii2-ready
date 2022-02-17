@@ -12,7 +12,7 @@ use yii\helpers\Url;
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="<?= Url::home() ?>" class="brand-link">
-        <img src="<?= $this->assetManager->bundles[AdminLteAssets::class]->baseUrl . '/adminlte/img/AdminLTELogo.png' ?>"
+        <img src="<?= Url::base().'/adminlte/img/AdminLTELogo.png' ?>"
              alt="AdminLTE Logo"
              class="brand-image img-circle elevation-3"
              style="opacity: .8">
@@ -24,7 +24,7 @@ use yii\helpers\Url;
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
-                <img src="<?= $this->assetManager->bundles[AdminLteAssets::class]->baseUrl . '/' . (Yii::$app->user->identity->photo ?? '') ?>"
+                <img src="<?= Yii::$app->user->identity->photoUrl ?>"
                      class="img-circle elevation-2"
                      alt="User Image">
             </div>

@@ -4,14 +4,13 @@ namespace console\models;
 
 use common\models\User;
 
-class SignupForm extends \yii\base\Model
+class AdminSignupForm extends \yii\base\Model
 {
     public string $username = '';
     public string $first_name = '';
     public string $last_name = '';
     public string $phone = '';
     public string $password = '';
-    public int $type = User::TYPE_ADMIN;
 
     public function rules()
     {
@@ -19,8 +18,6 @@ class SignupForm extends \yii\base\Model
             [['username', 'first_name', 'last_name', 'phone', 'password'], 'required'],
             ['phone', 'match', 'pattern' => '/\+[9][9][8] [0-9][0-9] [0-9][0-9][0-9] [0-9][0-9] [0-9][0-9]/'],
             ['password', 'string', 'min' => 6],
-            ['type', 'in', 'range' => [User::TYPE_PASSENGER, User::TYPE_DRIVER, User::TYPE_ADMIN]],
-            ['type', 'default', 'value' => User::TYPE_ADMIN],
         ];
     }
 
@@ -39,16 +36,16 @@ class SignupForm extends \yii\base\Model
             'first_name' => $this->first_name,
             'last_name' => $this->last_name,
             'phone' => $this->phone,
-            'type' => $this->type,
+            'type' => User::TYPE_ADMIN,
             'status' => User::STATUS_ACTIVE,
-            'sex' => User::SEX_MAN
         ], '');
         $user->setPassword($this->password);
         $user->generateAuthKey();
 
         if (!$user->save()) {
-            var_dump($user->getErrors());
+            $this->addErrors($user->getErrors());
+            return false;
         }
-        return $user->save();
+        return true;
     }
 }

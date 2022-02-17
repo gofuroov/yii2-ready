@@ -21,7 +21,6 @@ class m220103_093423_create_user_table extends Migration
             'first_name' => $this->string(),
             'last_name' => $this->string(),
             'phone' => $this->string(),
-            'sex' => $this->tinyInteger(),
             'auth_key' => $this->string(32)->notNull(),
             'password_hash' => $this->string()->notNull(),
             'password_reset_token' => $this->string()->unique(),

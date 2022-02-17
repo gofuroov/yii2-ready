@@ -9,7 +9,7 @@ use yii\helpers\Url;
     <!-- Left navbar links -->
     <ul class="navbar-nav">
         <li class="nav-item">
-            <a class="nav-link" data-widget="pushmenu" data-baseurl="<?= Url::base() ?>" href="#" role="button">
+            <a class="nav-link" id="sidebar-menu" href="#">
                 <i class="fas fa-bars"></i>
             </a>
         </li>
@@ -85,7 +85,7 @@ use yii\helpers\Url;
             </a>
             <ul class="dropdown-menu">
                 <li class="user-header bg-gray-light">
-                    <img src="<?= $this->assetManager->bundles[AdminLteAssets::class]->baseUrl . '/' . (Yii::$app->user->identity->photo ?? '') ?>"
+                    <img src="<?= Yii::$app->user->identity->photoUrl ?>"
                          class="img-circle" alt="User Image"/>
                     <p>
                         <?= Yii::$app->user->identity->fullname ?? '' ?>

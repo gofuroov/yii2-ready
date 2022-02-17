@@ -12,7 +12,6 @@ use yii\helpers\Url;
 use yii\web\View;
 
 AdminLteAsset::register($this);
-$class = Yii::$app->request->cookies->getValue('sidebar', 'sidebar-collapse');
 ?>
 <?php $this->beginPage() ?>
     <!DOCTYPE html>
@@ -28,12 +27,12 @@ $class = Yii::$app->request->cookies->getValue('sidebar', 'sidebar-collapse');
               href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
         <?php $this->head() ?>
     </head>
-    <body class="hold-transition sidebar-mini layout-fixed <?= $class ?>">
+    <body class="hold-transition sidebar-mini layout-fixed sidebar-collapse">
     <?php $this->beginBody() ?>
     <div class="wrapper">
 
         <!-- Preloader -->
-        <?php $this->render("adminlte/_preloader") ?>
+        <?= YII_DEBUG ? '' : $this->render("adminlte/_preloader") ?>
 
         <!-- Navbar -->
         <?= $this->render("adminlte/_navbar") ?>
@@ -92,4 +91,4 @@ $class = Yii::$app->request->cookies->getValue('sidebar', 'sidebar-collapse');
     <?php $this->endBody() ?>
     </body>
     </html>
-<?php $this->endPage();
+<?php $this->endPage(); ?>

@@ -1,23 +1,38 @@
 /**
  * This code is created by Olimjon Gofurov
- * This helps to add active class to <a> tag of <li> in yii\widget\Menu
  */
 $(document).ready(function () {
-    $('a[data-widget="pushmenu"]').click(function (event) {
-        let baseUrl = $(this).data('baseurl');
-        $.ajax({
-            type: "POST",
-            url: baseUrl + '/site/sidebar/',
-            data: {},
-            success: function (data, status) {
-                console.log("Sidebar o'zgartirildi!");
-            },
-            error: function (data, status) {
-                alert("Xatolik!");
-            },
-            dataType: 'html'
-        });
-    });
-
+    //Execute tooltips
     $("body").tooltip({selector: '[data-toggle=tooltip]'});
+
+    /**
+     * Sidebar menu
+     * @type {*|jQuery|HTMLElement}
+     */
+    let body = $('body')
+    let storage = localStorage;
+    let condition = storage.getItem('sidebar');
+
+    if (condition === 'open') {
+        if (body.hasClass('sidebar-collapse')) {
+            body.removeClass('sidebar-collapse');
+        }
+    } else {
+        if (!body.hasClass('sidebar-collapse')) {
+            body.addClass('sidebar-collapse');
+        }
+    }
+
+    //Sidebar toggle
+    $('#sidebar-menu').click(function (e) {
+        e.preventDefault();
+        console.log(Date.now())
+        if (body.hasClass('sidebar-collapse')) {
+            body.removeClass('sidebar-collapse');
+            storage.setItem('sidebar', 'open');
+        } else {
+            body.addClass('sidebar-collapse');
+            storage.setItem('sidebar', 'close');
+        }
+    });
 })
