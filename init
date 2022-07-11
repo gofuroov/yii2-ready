@@ -364,11 +364,11 @@ function generateEnvFile()
     $example_file = __DIR__ . '/.env.example';
     $env_file = __DIR__ . '/.env';
     if (!file_exists($example_file)) {
-        echo "\n      skip coping $env_file\n";
+        echo "\n  skip coping $env_file\n";
         return;
     }
 
-    echo "      copy $example_file to $env_file\n";
+    echo "\n  coping $example_file to $env_file\n";
     copy($example_file, $env_file);
-    echo "      done\n";
+    echo "  coping done\n";
 }
