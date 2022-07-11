@@ -36,6 +36,7 @@ class User extends ActiveRecord implements IdentityInterface
     public const TYPE_USER = 1;
 
     //<editor-fold desc="Main">
+
     /**
      * {@inheritdoc}
      */
@@ -91,7 +92,10 @@ class User extends ActiveRecord implements IdentityInterface
 
     public function getPhotoUrl(): string
     {
-        return '';
+        if ($this->photo) {
+            return '/uploads/' . $this->photo;
+        }
+        return '/admin/images/defaultAvatar.png';
     }
     //</editor-fold>
 
