@@ -17,7 +17,9 @@
 
         <h3 class="profile-username text-center"><?= Yii::$app->user->identity->fullname ?? '' ?></h3>
 
-        <p class="text-muted text-center">Administrator</p>
+        <p class="text-muted text-center">
+            <?= Yii::$app->user->identity->typeName ?? '' ?>
+        </p>
 
         <ul class="list-group list-group-unbordered mb-3">
             <li class="list-group-item">

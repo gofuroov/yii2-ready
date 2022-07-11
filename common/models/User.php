@@ -76,11 +76,11 @@ class User extends ActiveRecord implements IdentityInterface
     {
         return [
             self::TYPE_USER => 'Foydalanuvchi',
-            self::TYPE_ADMIN => 'Admin',
+            self::TYPE_ADMIN => 'Administrator',
         ];
     }
 
-    public function renderType(): string
+    public function getTypeName(): string
     {
         return self::getTypes()[$this->type];
     }

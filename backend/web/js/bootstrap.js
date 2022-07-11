@@ -8,6 +8,6 @@ $(document).ready(function () {
     /**
      * Active link menu item
      */
-    // $(".nav-item.active a").addClass("active")
-    // $(".nav-item.active").removeClass("active")
+    $("#user-menu .nav-item.active a").addClass("active")
+    $("#user-menu .nav-item.active").removeClass("active")
 })

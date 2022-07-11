@@ -12,7 +12,8 @@
             <div class="col-auto">
                 <?= \yii\widgets\Menu::widget([
                     'options' => [
-                        'class' => 'nav nav-pills ml-auto p-2'
+                        'class' => 'nav nav-pills ml-auto p-2',
+                        'id' => 'user-menu',
                     ],
                     'encodeLabels' => false,
                     'items' => [
