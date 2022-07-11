@@ -1,4 +1,5 @@
 <?php
 
-return [
-];
+return array_merge($_ENV, [
+
+]);
