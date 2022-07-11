@@ -7,11 +7,37 @@
 
 namespace backend\controllers;
 
-use backend\models\forms\UserSettingsForm;
+use common\models\forms\UserSettingsForm;
+use yii\filters\AccessControl;
+use yii\filters\VerbFilter;
 use yii\web\UploadedFile;
 
 class UserController extends BaseController
 {
+    /**
+     * @inheritDoc
+     */
+    public function behaviors(): array
+    {
+        return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                ],
+            ],
+            'verbs' => [
+                'class' => VerbFilter::class,
+                'actions' => [
+                    'store-main' => ['POST'],
+                ],
+            ],
+        ];
+    }
+
     public function actionIndex()
     {
         $settings = new UserSettingsForm(['scenario' => UserSettingsForm::SCENARIO_MAIN]);

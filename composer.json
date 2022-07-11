@@ -25,7 +25,9 @@
     "yiisoft/yii2-swiftmailer": "~2.0.0 || ~2.1.0",
     "ext-json": "*",
     "yiisoft/yii2-imagine": "^2.3",
-    "kartik-v/yii2-widget-fileinput": "dev-master"
+    "kartik-v/yii2-widget-fileinput": "dev-master",
+    "gofuroov/yii2-generator": "*",
+    "vlucas/phpdotenv": "5.4.x-dev"
   },
   "require-dev": {
     "yiisoft/yii2-debug": "~2.1.0",
@@ -51,6 +53,10 @@
     {
       "type": "composer",
       "url": "https://asset-packagist.org"
+    },
+    {
+      "type": "path",
+      "url": "/var/www/yii2-ready/backend/runtime/tmp-extensions/yii2-generator"
     }
   ]
 }

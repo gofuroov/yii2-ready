@@ -68,7 +68,9 @@ echo "\n  Start initialization ...\n\n";
 $files = getFileList($rootPath);
 if (isset($env['skipFiles'])) {
     $skipFiles = $env['skipFiles'];
-    array_walk($skipFiles, function(&$value) use($env, $root) { $value = "$root/$value"; });
+    array_walk($skipFiles, function (&$value) use ($env, $root) {
+        $value = "$root/$value";
+    });
     $files = array_diff($files, array_intersect_key($env['skipFiles'], array_filter($skipFiles, 'file_exists')));
 }
 $all = false;
@@ -80,10 +82,10 @@ foreach ($files as $file) {
 
 $filesToRemove = [];
 $skipFiles = !empty($env['skipFiles']) ? $env['skipFiles'] : [];
-foreach(array_column($envs, 'path') as $envPath) {
+foreach (array_column($envs, 'path') as $envPath) {
     if ($env['path'] === $envPath) continue;
 
-	$filesToRemove =
+    $filesToRemove =
         array_merge(
             $filesToRemove,
             array_diff(getFileList("$root/environments/{$envPath}"), $files, $filesToRemove, $skipFiles)
@@ -91,15 +93,15 @@ foreach(array_column($envs, 'path') as $envPath) {
 }
 $filesToRemove = array_filter($filesToRemove, 'file_exists');
 if ($filesToRemove) {
-	echo "\n  Remove files from other environments ...\n\n";
+    echo "\n  Remove files from other environments ...\n\n";
 
-	$all = false;
-	foreach ($filesToRemove as $file) {
-		if (!removeFile($root, $file, $all, $params)) {
-			break;
-		}
-	}
-	echo "\n";
+    $all = false;
+    foreach ($filesToRemove as $file) {
+        if (!removeFile($root, $file, $all, $params)) {
+            break;
+        }
+    }
+    echo "\n";
 }
 
 $callbacks = ['setCookieValidationKey', 'setWritable', 'setExecutable', 'createSymlink'];
@@ -108,6 +110,8 @@ foreach ($callbacks as $callback) {
         $callback($root, $env[$callback]);
     }
 }
+
+generateEnvFile();
 
 echo "\n  ... initialization completed.\n\n";
 
@@ -177,34 +181,34 @@ function copyFile($root, $source, $target, &$all, $params)
 
 function removeFile($root, $target, &$all, $params)
 {
-	if (is_file($root . '/' . $target)) {
-		if ($all) {
-			echo "  delete $target\n";
-		} else {
-			echo "      delete $target\n";
-			echo "            ...confirm? [Yes|No|All|Quit] ";
+    if (is_file($root . '/' . $target)) {
+        if ($all) {
+            echo "  delete $target\n";
+        } else {
+            echo "      delete $target\n";
+            echo "            ...confirm? [Yes|No|All|Quit] ";
 
-			$answer = !empty($params['delete']) ? $params['delete'] : trim(fgets(STDIN));
-			if (!strncasecmp($answer, 'q', 1)) {
-				return false;
-			} else {
-				if (!strncasecmp($answer, 'y', 1)) {
-					echo "  delete $target\n";
-				} else {
-					if (!strncasecmp($answer, 'a', 1)) {
-						echo "  delete $target\n";
-						$all = true;
-					} else {
-						echo "       skip $target\n";
-						return true;
-					}
-				}
-			}
-		}
-		return unlink($root . '/' . $target);
-	}
+            $answer = !empty($params['delete']) ? $params['delete'] : trim(fgets(STDIN));
+            if (!strncasecmp($answer, 'q', 1)) {
+                return false;
+            } else {
+                if (!strncasecmp($answer, 'y', 1)) {
+                    echo "  delete $target\n";
+                } else {
+                    if (!strncasecmp($answer, 'a', 1)) {
+                        echo "  delete $target\n";
+                        $all = true;
+                    } else {
+                        echo "       skip $target\n";
+                        return true;
+                    }
+                }
+            }
+        }
+        return unlink($root . '/' . $target);
+    }
 
-	return true;
+    return true;
 }
 
 function getParams()
@@ -353,4 +357,18 @@ function formatMessage($message, $styles)
     }
 
     return sprintf("\x1b[%sm", implode(';', array_map('getStyleCode', $styles))) . $message . "\x1b[0m";
+}
+
+function generateEnvFile()
+{
+    $example_file = __DIR__ . '/.env.example';
+    $env_file = __DIR__ . '/.env';
+    if (file_exists($example_file)) {
+        echo "skip coping $env_file\n";
+        return;
+    }
+
+    echo "copy $example_file to $env_file\n";
+    copy($example_file, $env_file);
+    echo "done\n";
 }

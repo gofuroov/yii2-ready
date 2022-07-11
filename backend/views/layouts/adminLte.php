@@ -29,7 +29,7 @@ AdminLteAsset::register($this);
     </head>
     <body class="hold-transition sidebar-mini layout-fixed sidebar-collapse">
     <?php $this->beginBody() ?>
-    <div class="wrapper">
+    <div class="wrapper" id="app">
 
         <!-- Preloader -->
         <?= $this->render("adminlte/_preloader") ?>
@@ -91,4 +91,4 @@ AdminLteAsset::register($this);
     <?php $this->endBody() ?>
     </body>
     </html>
-<?php $this->endPage(); ?>
+<?php $this->endPage();

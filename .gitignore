@@ -48,3 +48,6 @@ phpunit.phar
 /api/web/robots.txt
 
 .~database.xlsx
+
+# ignore environment files
+.env

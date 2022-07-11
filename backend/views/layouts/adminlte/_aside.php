@@ -29,15 +29,12 @@ use yii\helpers\Url;
             </div>
             <div class="info">
                 <a href="<?= Url::to(['user/index']) ?>" class="d-block"
-                   style="text-transform: capitalize"><?= Yii::$app->user->identity->username ?? '' ?></a>
+                   style="text-transform: capitalize"><?= Yii::$app->user->identity->fullname ?? '' ?></a>
             </div>
         </div>
 
-        <!-- Sidebar Menu -->
         <nav class="mt-2">
             <?= Menu::getData() ?>
         </nav>
-        <!-- /.sidebar-menu -->
     </div>
-    <!-- /.sidebar -->
 </aside>
