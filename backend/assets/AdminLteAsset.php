@@ -21,7 +21,7 @@ class AdminLteAsset extends \yii\web\AssetBundle
         'adminlte/css/adminlte.min.css',
         'adminlte/plugins/overlayScrollbars/css/OverlayScrollbars.min.css',
         'css/site.css',
-//        'css/custom.css'
+        'css/custom.css'
     ];
     public $js = [
         'adminlte/plugins/jquery-ui/jquery-ui.min.js',
